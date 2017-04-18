@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HWRatioContainer">
+        <attr name="heightDivideWidthRatio" format="float" />
+        <attr name="lockSide">
+            <enum name="width" value="0" />
+            <enum name="height" value="1" />
+        </attr>
+        <attr name="calculateRatioIncludePaddiang" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/add"
+            style="@style/BottomTextStyle"
+            android:onClick="click"
+            android:text="ADD" />
+
+        <TextView
+            android:id="@+id/remove"
+            style="@style/BottomTextStyle"
+            android:onClick="click"
+            android:text="REMOVE" />
+
+        <TextView
+            android:id="@+id/reverse"
+            style="@style/BottomTextStyle"
+            android:onClick="click"
+            android:text="REVERSE" />
+
+        <TextView
+            android:id="@+id/scroll"
+            style="@style/BottomTextStyle"
+            android:onClick="click"
+            android:text="SCROLL" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="click">
+
+        <SeekBar
+            android:id="@+id/sb"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:max="20"
+             />
+
+        <TextView
+            style="@style/BottomTextStyle"
+            android:text="VANISH" />
+    </FrameLayout>
+</LinearLayout>
