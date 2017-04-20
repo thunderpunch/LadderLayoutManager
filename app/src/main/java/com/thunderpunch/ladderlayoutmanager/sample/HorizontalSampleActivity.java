@@ -1,5 +1,6 @@
 package com.thunderpunch.ladderlayoutmanager.sample;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,7 @@ public class HorizontalSampleActivity extends AppCompatActivity {
         new LadderSimpleSnapHelper().attachToRecyclerView(rcv);
         adapter = new HSAdapter();
         rcv.setAdapter(adapter);
+
         final SeekBar sb = (SeekBar) findViewById(R.id.sb);
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -119,7 +121,11 @@ public class HorizontalSampleActivity extends AppCompatActivity {
                 ivc.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
                     public void onGlobalLayout() {
-                        ivc.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            ivc.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        } else {
+                            ivc.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                        }
                         ivc.setTranslationX(ivc.getWidth() >> 4);
                     }
                 });

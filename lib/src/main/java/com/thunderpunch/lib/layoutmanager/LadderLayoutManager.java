@@ -13,7 +13,7 @@ import android.view.animation.Interpolator;
 import java.util.ArrayList;
 
 /**
- * Created by ThunderPunch on 2017/2/15
+ * Created by thunderPunch on 2017/2/15
  * Description:
  */
 
@@ -183,7 +183,8 @@ public class LadderLayoutManager extends RecyclerView.LayoutManager implements R
             int start = (int) (remainSpace - offsetPercent * maxOffset);
             ItemLayoutInfo info = new ItemLayoutInfo(start,
                     (float) (Math.pow(mScale, j - 1) * (1 - offsetPercent * (1 - mScale))),
-                    offsetPercent, start * 1.0f / space
+                    offsetPercent,
+                    start * 1.0f / space
             );
             layoutInfos.add(0, info);
 
@@ -197,6 +198,13 @@ public class LadderLayoutManager extends RecyclerView.LayoutManager implements R
                 break;
             }
             remainSpace -= maxOffset;
+            if (remainSpace <= 0) {
+                info.start = (int) (remainSpace + maxOffset);
+                info.positionOffsetPercent = 0;
+                info.layoutPercent = info.start / space;
+                info.scaleXY = (float) Math.pow(mScale, j - 1);
+                break;
+            }
         }
 
         if (bottomItemPosition < mChildCount) {
